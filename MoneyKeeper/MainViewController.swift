@@ -24,7 +24,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
     var nameOfExpenses: [String] = []
     var summOfExpenses: [String] = []
     var priorityOfExpenses: [String] = []
-    var helpCanAcces: String = ""
     
     @IBAction func unwindToMainScreen(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? SecondViewController else { return }
