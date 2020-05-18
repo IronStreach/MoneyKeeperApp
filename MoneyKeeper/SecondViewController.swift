@@ -23,6 +23,8 @@ class SecondViewController: UIViewController {
         stepperPriority.minimumValue = 1
         stepperPriority.maximumValue = 1000
         
+        priorityTF.text = "\(stepperPriority.value)"
+        
         summTF.keyboardType = .numbersAndPunctuation
         priorityTF.keyboardType = .numbersAndPunctuation
     }

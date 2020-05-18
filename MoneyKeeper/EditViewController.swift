@@ -25,9 +25,10 @@ class EditViewController: UIViewController {
         editSummTF.keyboardType = .numbersAndPunctuation
         editPriorityTF.keyboardType = .numbersAndPunctuation
         
-        editStepper.value = 1
+        editStepper.value = Double(priorityForEdit)!
         editStepper.minimumValue = 1
         editStepper.maximumValue = 1000
+        
     }
     
     @IBOutlet weak var editNameTF: UITextField!
