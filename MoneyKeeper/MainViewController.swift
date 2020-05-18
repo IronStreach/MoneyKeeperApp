@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController, UITableViewDelegate {
     
@@ -20,48 +21,79 @@ class MainViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let context = getContext()
+        let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
+        
+        do {
+            expenses = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
     @IBOutlet weak var addButton: UIButton!
-    var nameOfExpenses: [String] = []
-    var summOfExpenses: [String] = []
-    var priorityOfExpenses: [String] = []
+    var expenses: [Expenses] = []
     
     @IBAction func unwindToMainScreen(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? SecondViewController else { return }
-        nameOfExpenses.append(svc.nameTF.text!)
-        summOfExpenses.append(svc.summTF.text!)
-        priorityOfExpenses.append(svc.priorityTF.text!)
+        
+        let context = getContext()
+        guard let entity = NSEntityDescription.entity(forEntityName: "Expenses", in: context) else { return }
+        
+        let expense = Expenses(entity: entity, insertInto: context)
+        expense.name = svc.nameTF.text!
+        expense.summ = svc.summTF.text!
+        expense.priority = svc.priorityTF.text!
+        expenses.append(expense)
+        
         table.reloadData()
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     @IBAction func unwindFromEditController(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? EditViewController else { return }
-        nameOfExpenses[svc.index] = svc.editNameTF.text!
-        summOfExpenses[svc.index] = svc.editSummTF.text!
-        priorityOfExpenses[svc.index] = svc.editPriorityTF.text!
+        expenses[svc.index].name = svc.editNameTF.text!
+        expenses[svc.index].summ = svc.editSummTF.text!
+        expenses[svc.index].priority = svc.editPriorityTF.text!
         table.reloadData()
+    }
+    
+    private func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nameOfExpenses.count
+        return self.expenses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! CustomCell
-        cell.nameLabel?.text = nameOfExpenses[indexPath.row]
-        cell.summLabel?.text = "\(summOfExpenses[indexPath.row])₽"
+        cell.nameLabel?.text = expenses[indexPath.row].name
+        cell.summLabel?.text = "\(expenses[indexPath.row].summ ?? "???")₽"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "EditViewContoller") as? EditViewController {
-            vc.nameForEdit = nameOfExpenses[indexPath.row]
-            vc.summForEdit = summOfExpenses[indexPath.row]
-            vc.priorityForEdit = priorityOfExpenses[indexPath.row]
+            vc.nameForEdit = expenses[indexPath.row].name!
+            vc.summForEdit = expenses[indexPath.row].summ!
+            vc.priorityForEdit = expenses[indexPath.row].priority!
             vc.index = indexPath.row
             navigationController?.showDetailViewController(vc, sender: nil)
         }
     }
     
 }
+

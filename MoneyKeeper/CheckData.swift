@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 func checkDataIsEmpty(data: UITextField) -> Bool {
-    guard data.text != nil && data.text != "" else { return false }
+    guard data.text?.isEmpty == false else { return false }
     return true
 }
 
 func checkDataIsPositiveNumber(data: UITextField) -> Bool {
-    guard data.text != nil && data.text != "" && Double(data.text!) != nil
+    guard data.text?.isEmpty == false && Double(data.text!) != nil
         && Double(data.text!)! > 0 else { return false }
     return true
 }
