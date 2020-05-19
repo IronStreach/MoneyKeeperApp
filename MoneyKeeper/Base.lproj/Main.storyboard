@@ -92,7 +92,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7pC-wD-z0c"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FoR-LD-frw"/>
+                    <navigationItem key="navigationItem" id="FoR-LD-frw">
+                        <barButtonItem key="rightBarButtonItem" image="line.horizontal.3.decrease" catalog="system" id="14z-VS-JzI">
+                            <connections>
+                                <action selector="sort:" destination="J7U-5A-Rti" id="shE-CD-veH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="65O-kE-Gcv" id="Ig6-de-xnP"/>
                         <outlet property="table" destination="VBb-Pr-gsl" id="OdI-qm-Bdm"/>
@@ -24483,5 +24489,6 @@ CjYAFgo4ABYKOgAWCjwAFgpFABYKSgAWClAAFgpYABYKWgAWClwAFgpeABYKYAAWG8wAFhvRABYb3gAW
 G+EAFhvuABYb8wAWG/sAFhv+ABYcAwAWHAsAAAAAAAAEAQAAAAAAAABnAAAAAAAAAAAAAAAAABYcDg
 </mutableData>
         </image>
+        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
     </resources>
 </document>

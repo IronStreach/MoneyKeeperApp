@@ -24,8 +24,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        let context = getContext()
         let fetchRequest = getFetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "priority", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let context = getContext()
         
         do {
             expenses = try context.fetch(fetchRequest)
@@ -38,6 +41,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var addButton: UIButton!
     var expenses: [Expenses] = []
     
+    @IBAction func sort(_ sender: UIBarButtonItem) {
+        expenses = expenses.sorted(by: { Int($0.priority!)! < Int($1.priority!)!})
+        table.reloadData()
+    }
+
     @IBAction func unwindToMainScreen(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? SecondViewController else { return }
         
@@ -76,6 +84,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
         return fetchRequest
     }
+    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -87,6 +96,7 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! CustomCell
         cell.nameLabel?.text = expenses[indexPath.row].name
         cell.summLabel?.text = "\(expenses[indexPath.row].summ ?? "???")₽"
+        cell.priority = expenses[indexPath.row].priority!
         return cell
     }
     

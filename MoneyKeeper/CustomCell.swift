@@ -16,4 +16,5 @@ class CustomCell: UITableViewCell {
 
         @IBOutlet weak var nameLabel: UILabel!
         @IBOutlet weak var summLabel: UILabel!
+        var priority: String = "" 
 }
