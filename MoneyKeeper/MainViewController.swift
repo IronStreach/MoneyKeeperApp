@@ -25,7 +25,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         super.viewWillAppear(true)
         
         let context = getContext()
-        let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
+        let fetchRequest = getFetchRequest()
         
         do {
             expenses = try context.fetch(fetchRequest)
@@ -71,6 +71,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+    
+    private func getFetchRequest() -> NSFetchRequest<Expenses> {
+        let fetchRequest: NSFetchRequest<Expenses> = Expenses.fetchRequest()
+        return fetchRequest
+    }
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -95,5 +100,28 @@ extension MainViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let context = getContext()
+            let fetchRequest = getFetchRequest()
+            if let objects = try? context.fetch(fetchRequest) {
+                for object in objects {
+                    if object.name == expenses[indexPath.row].name {
+                    context.delete(object)
+                }
+            }
+            
+            expenses.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
+}
