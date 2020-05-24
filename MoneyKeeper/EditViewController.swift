@@ -1,11 +1,3 @@
-//
-//  EditViewController.swift
-//  MoneyKeeper
-//
-//  Created by Станислав Никишков on 10.05.2020.
-//  Copyright © 2020 Станислав Никишков. All rights reserved.
-//
-
 import UIKit
 
 class EditViewController: UIViewController {
@@ -46,7 +38,7 @@ class EditViewController: UIViewController {
     var nameForEdit: String = ""
     var summForEdit: String = ""
     var priorityForEdit: String = ""
-    var index: Int = 0
+    var index: Int = 0 // index of selected cell
 
 }
 
@@ -60,7 +52,7 @@ extension EditViewController: UITextFieldDelegate {
         self.view.endEditing(true)
         return true
     }
-    
+    // check data for corectness
     func textFieldDidEndEditing(_ textField: UITextField) {
         editDoneButton.isEnabled = false
         

@@ -10,7 +10,7 @@
 		AB164D0E2467FA0B00D979CB /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB164D0D2467FA0B00D979CB /* EditViewController.swift */; };
 		AB164D102467FECA00D979CB /* CheckData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB164D0F2467FECA00D979CB /* CheckData.swift */; };
 		AB28CBF924642BEE0027268D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28CBF824642BEE0027268D /* MainViewController.swift */; };
-		AB28CBFB24642C100027268D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28CBFA24642C100027268D /* SecondViewController.swift */; };
+		AB28CBFB24642C100027268D /* AddExpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28CBFA24642C100027268D /* AddExpViewController.swift */; };
 		AB62BC732463EEEB0039A0FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62BC722463EEEB0039A0FB /* AppDelegate.swift */; };
 		AB62BC752463EEEB0039A0FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62BC742463EEEB0039A0FB /* SceneDelegate.swift */; };
 		AB62BC7A2463EEEB0039A0FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB62BC782463EEEB0039A0FB /* Main.storyboard */; };
@@ -25,7 +25,7 @@
 		AB164D0D2467FA0B00D979CB /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		AB164D0F2467FECA00D979CB /* CheckData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckData.swift; sourceTree = "<group>"; };
 		AB28CBF824642BEE0027268D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		AB28CBFA24642C100027268D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AB28CBFA24642C100027268D /* AddExpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpViewController.swift; sourceTree = "<group>"; };
 		AB62BC6F2463EEEB0039A0FB /* MoneyKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB62BC722463EEEB0039A0FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB62BC742463EEEB0039A0FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				AB62BC782463EEEB0039A0FB /* Main.storyboard */,
 				AB164D0D2467FA0B00D979CB /* EditViewController.swift */,
 				ABE9FE40246597B400E2D847 /* CustomCell.swift */,
-				AB28CBFA24642C100027268D /* SecondViewController.swift */,
+				AB28CBFA24642C100027268D /* AddExpViewController.swift */,
 				AB164D0F2467FECA00D979CB /* CheckData.swift */,
 				AB28CBF824642BEE0027268D /* MainViewController.swift */,
 				AB62BC7B2463EEED0039A0FB /* Assets.xcassets */,
@@ -166,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE9FE41246597B400E2D847 /* CustomCell.swift in Sources */,
-				AB28CBFB24642C100027268D /* SecondViewController.swift in Sources */,
+				AB28CBFB24642C100027268D /* AddExpViewController.swift in Sources */,
 				AB164D0E2467FA0B00D979CB /* EditViewController.swift in Sources */,
 				AB28CBF924642BEE0027268D /* MainViewController.swift in Sources */,
 				ABFF1FD52471BD610078259D /* MoneyKeeper.xcdatamodeld in Sources */,

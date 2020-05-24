@@ -93,7 +93,7 @@
                         <viewLayoutGuide key="safeArea" id="7pC-wD-z0c"/>
                     </view>
                     <navigationItem key="navigationItem" id="FoR-LD-frw">
-                        <barButtonItem key="rightBarButtonItem" image="line.horizontal.3.decrease" catalog="system" id="14z-VS-JzI">
+                        <barButtonItem key="rightBarButtonItem" image="sortButton" id="14z-VS-JzI">
                             <connections>
                                 <action selector="sort:" destination="J7U-5A-Rti" id="shE-CD-veH"/>
                             </connections>
@@ -101,6 +101,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="65O-kE-Gcv" id="Ig6-de-xnP"/>
+                        <outlet property="sortButton" destination="14z-VS-JzI" id="LtN-GA-MJr"/>
                         <outlet property="table" destination="VBb-Pr-gsl" id="OdI-qm-Bdm"/>
                     </connections>
                 </viewController>
@@ -108,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="3614.4927536231885" y="-503.804347826087"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Add Expense View Controller-->
         <scene sceneID="WA3-8J-cRL">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="aLh-dk-pQg" customClass="SecondViewController" customModule="MoneyKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" id="aLh-dk-pQg" customClass="AddExpenseViewController" customModule="MoneyKeeper" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eyP-e8-kNA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24489,6 +24490,6 @@ CjYAFgo4ABYKOgAWCjwAFgpFABYKSgAWClAAFgpYABYKWgAWClwAFgpeABYKYAAWG8wAFhvRABYb3gAW
 G+EAFhvuABYb8wAWG/sAFhv+ABYcAwAWHAsAAAAAAAAEAQAAAAAAAABnAAAAAAAAAAAAAAAAABYcDg
 </mutableData>
         </image>
-        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
+        <image name="sortButton" width="30" height="30"/>
     </resources>
 </document>

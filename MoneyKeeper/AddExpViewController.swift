@@ -1,14 +1,6 @@
-//
-//  SecondViewController.swift
-//  MoneyKeeper
-//
-//  Created by Станислав Никишков on 07.05.2020.
-//  Copyright © 2020 Станислав Никишков. All rights reserved.
-//
-
 import UIKit
 
-class SecondViewController: UIViewController {
+class AddExpenseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +15,7 @@ class SecondViewController: UIViewController {
         stepperPriority.minimumValue = 1
         stepperPriority.maximumValue = 1000
         
-        priorityTF.text = "\(Int(stepperPriority.value))"
+        priorityTF.text = "\(Int(stepperPriority.value))" // set priority value as initial stepper value
         
         summTF.keyboardType = .numbersAndPunctuation
         priorityTF.keyboardType = .numbersAndPunctuation
@@ -35,17 +27,18 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var stepperPriority: UIStepper!
+    
     @IBAction func changePriority(_ sender: UIStepper) {
         priorityTF.text = "\(Int(stepperPriority.value))"
     }
 }
 
-extension SecondViewController: UITextFieldDelegate {
-    
+extension AddExpenseViewController: UITextFieldDelegate {
+    // end edtiting when touch view
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    // end edititng and next TF become first responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         
@@ -63,7 +56,7 @@ extension SecondViewController: UITextFieldDelegate {
             return true
         }
     }
-    
+    // check data for correctness
     func textFieldDidEndEditing(_ textField: UITextField) {
         doneButton.isEnabled = false
         
